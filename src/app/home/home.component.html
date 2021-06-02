@@ -27,7 +27,8 @@
 <div *ngIf="mockParkList?.length > 0" class="row">
     <div *ngFor="let mockPark of mockParkList" class="col-xs-12 col-sm-4">
         <app-card
-            [data]="mockPark.rowData">
+            [data]="mockPark.rowData"
+            [path]="'parks'">
         </app-card>
     </div>
 </div>

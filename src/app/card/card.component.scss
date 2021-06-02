@@ -1,14 +1,66 @@
+i {
+  font-size: 1rem !important;  
+}
+
+.time-am {
+  background: linear-gradient(110deg, #fff383 60%, #ffe600 60%);
+  text-align: right
+}
+
+.time-pm {
+  background: linear-gradient(110deg, #9fd8ff 60%, #3bb1ff 60%);
+  text-align: right
+}
+
+.time-allday {
+  background: linear-gradient(110deg, #b8e7b5 60%, #86cd82 60%);
+  text-align: right
+}
+
+.card-type {
+  background: linear-gradient(110deg, #dfdfdf 25%, #ffffff00 20%);
+  vertical-align: middle;
+}
+
+.card-type i{
+  font-size: 2rem !important;
+  margin: auto;
+  text-align:center;
+}
+
 .card {
   display: block;
     margin-bottom: 20px;
     line-height: 1.42857143;
     background-color: #fff;
+    color: #000;
     border-radius: 2px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     transition: box-shadow .25s;
+    min-height: 450px;
 }
+.card-disabled {
+  display: block;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    color: rgb(114, 113, 113);
+    background-color: lightgray;
+    border-radius: 2px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    min-height:450px;
+}
+
+.card-disabled a{
+ visibility: hidden; 
+ color: darkgray;
+ border-top: 1px solid darkgray;
+ cursor: default;
+ margin-bottom: 0px;
+}
+
 .card:hover {
   box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
 }
 .img-card {
   width: 100%;
@@ -33,16 +85,19 @@
   font-weight: 700;
   font-size: 1.65em;
 }
-.card-title a {
+.card-title {
   color: #000;
   text-decoration: none !important;
 }
 .card-read-more {
   border-top: 1px solid #D4D4D4;
+  height: 50px;
 }
+
 .card-read-more a {
   text-decoration: none !important;
   padding:10px;
   font-weight:600;
   text-transform: uppercase
+  
 }

@@ -10,7 +10,8 @@ export class ParkComponent implements OnInit {
 
   public park = Constants.mockPark1;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }

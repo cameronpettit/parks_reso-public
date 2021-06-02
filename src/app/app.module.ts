@@ -10,6 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { CardComponent } from './card/card.component';
 import { ParkComponent } from './park/park.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { FacilitiesListComponent } from './facilities/facilities-list/facilities-list.component';
+import { ParksListComponent } from './parks-list/parks-list.component';
+import { ReserveComponent } from './reserve/reserve.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +23,16 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     HeaderComponent,
     CardComponent,
     ParkComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    FacilitiesListComponent,
+    ParksListComponent,
+    ReserveComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   exports: [
     CardComponent

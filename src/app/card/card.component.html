@@ -1,22 +1,47 @@
-<div class="card">
-    <a class="img-card" (click)="navigate(this.data._id)">
-    <img src="assets/images/Akamina-Kishinena-Iain-Robert-Reid-15.jpg" />
-    </a>
-    <div class="card-content">
-        <h4 class="card-title">
-            <a (click)="navigate(this.data._id)"> {{this.data.name  || "somthing"}}
-            </a>
-        </h4>
-        <p *ngIf="this.data.status">
-            Park is open!
-        </p>
-        <p *ngIf="!this.data.status">
-            Park is closed :(
-        </p>
+<div [ngClass]="checkEnabled() ? 'card' : 'card-disabled' " (click)="navigate(this.data._id)">
+    <div class="img-card">
+        <img src="assets/images/Akamina-Kishinena-Iain-Robert-Reid-15.jpg" />
     </div>
-    <div class="card-read-more">
-        <a (click)="navigate(this.data._id)"  class="btn btn-link btn-block">
-            Book a Pass
-        </a>
+    <div class="card-content">
+        <h4> {{this.data.name || "Park"}} </h4>
+        <div *ngIf="this.data.time && this.data.status" class="row my-2">
+            <span *ngIf="this.data.time === 'AM'" class="time-am col-sm-12">Morning</span>
+            <span *ngIf="this.data.time === 'PM'" class="time-pm col-sm-12">Afternoon</span>
+            <span *ngIf="this.data.time === 'All Day'" class="time-allday col-sm-12">All Day</span>
+        </div>
+        <div *ngIf="this.data._schemaName == 'Facility' && this.data.status" class="card-type row p-1">
+            <div class="col-3">
+                <i *ngIf="this.data.type == 'parking'" class="material-icons">directions_car</i>
+                <i *ngIf="this.data.type == 'trail'" class="material-icons">directions_walk</i>
+            </div>
+            <h4 *ngIf="this.data.type" class="col-7"> {{ getPassString() }} Pass</h4>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+                <div *ngIf="this.data.status">
+                    <div *ngIf="checkCapacity()>'0'">
+                        <span class="badge badge-pill badge-success"><i class="material-icons">terrain</i></span>
+                        Open
+                        <span *ngIf="this.data.capacity && checkCapacity()<lowCapacity" class="text-danger"> - Low capacity remaining</span>
+                    </div>
+                    <div *ngIf="checkCapacity()<='0'">
+                        <span class="badge badge-pill badge-warning"><i class="material-icons">group</i></span>
+                        Full Capacity
+                    </div>
+                </div>
+                <div *ngIf="!this.data.status">
+                    <span class="badge badge-pill badge-danger"><i class="material-icons">close</i></span>
+                    Closed
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-auto">
+        <div class="card-read-more">
+            <a (click)="navigate(this.data._id)" class="btn btn-link btn-block">
+                Reserve Now
+            </a>
+        </div>
     </div>
 </div>

@@ -28,7 +28,7 @@ export class Constants {
   public static readonly mockFacility1 = {
     _id: 10,
     _schemaName: 'Facility',
-    name: 'Goldstream Trail',
+    name: 'Goldstream Trail A',
     type: 'trail',
     time: 'AM',
     capacity: 400,
@@ -40,14 +40,71 @@ export class Constants {
   public static readonly mockFacility2 = {
     _id: 11,
     _schemaName: 'Facility',
-    name: 'Goldstream Parking Lot',
-    type: 'parking',
-    time: 'AM',
-    capacity: 100,
+    name: 'Goldstream Trail A',
+    type: 'trail',
+    time: 'PM',
+    capacity: 400,
     status: 'open',
-    passes: [],
+    passes: [100],
     park: 1
   };
+
+  public static readonly mockFacility3 = {
+    _id: 12,
+    _schemaName: 'Facility',
+    name: 'Goldstream Parking Lot',
+    type: 'parking',
+    time: 'All Day',
+    capacity: 100,
+    status: 'open',
+    passes: [2],
+    park: 1
+  };
+
+  public static readonly mockFacility4 = {
+    _id: 13,
+    _schemaName: 'Facility',
+    name: 'Goldstream Closed Facility',
+    type: 'trail',
+    time: 'All Day',
+    capacity: 100,
+    status: false,
+    passes: [2],
+    park: 1
+  };
+
+  public static readonly mockFacility5 = {
+    _id: 13,
+    _schemaName: 'Facility',
+    name: 'Goldstream Low Capacity',
+    type: 'trail',
+    time: 'PM',
+    capacity: 100,
+    status: true,
+    passes: [95],
+    park: 1
+  };
+
+  public static readonly mockFacility6 = {
+    _id: 13,
+    _schemaName: 'Facility',
+    name: 'Goldstream Full Capacity',
+    type: 'trail',
+    time: 'AM',
+    capacity: 100,
+    status: true,
+    passes: [100],
+    park: 1
+  };
+
+  public static readonly mockFacilityList = [
+    {rowData: Constants.mockFacility1},
+    {rowData: Constants.mockFacility2},
+    {rowData: Constants.mockFacility3},
+    {rowData: Constants.mockFacility4},
+    {rowData: Constants.mockFacility5},
+    {rowData: Constants.mockFacility6},
+  ];
 
   public static readonly mockPark1 = {
     _id: 1,
@@ -78,7 +135,7 @@ export class Constants {
     _id: 4,
     _schemaName: 'Park',
     name: 'Joffre Lakes',
-    status: 'open',
+    status: false,
     facilities: []
   };
 
@@ -105,7 +162,6 @@ export class Constants {
     status: 'open',
     facilities: []
   };
-
 
   public static readonly mockParkList = [
     { rowData: Constants.mockPark1 },
