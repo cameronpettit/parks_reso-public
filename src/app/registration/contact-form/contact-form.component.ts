@@ -12,12 +12,17 @@ export class ContactFormComponent implements OnInit {
   public myForm: FormGroup;
   public iAgree = false;
 
+  public months = ['January', 'February', 'March',
+    'April', 'May', 'June',
+    'July', 'August', 'September',
+    'October', 'November', 'December'
+  ];
+
   constructor(
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    console.log(this.passData);
     this.initForm();
   }
 
@@ -38,10 +43,14 @@ export class ContactFormComponent implements OnInit {
       }
     );
     if (this.passData && this.passData.passType && this.passData.passType.type) {
-      if (this.passData.passType.type === 'trail') {
+      if (this.passData.passType.type !== 'Parking') {
         this.myForm.controls['license'].clearValidators();
       }
     }
+  }
+
+  getMonthString(monthNo): string {
+    return this.months[monthNo - 1];
   }
 
   submit(): void {
