@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Pass } from 'src/app/models/pass';
+import { PassService } from '../../services/pass.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -13,7 +15,7 @@ export class ContactFormComponent implements OnInit {
   public iAgree = false;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -38,14 +40,29 @@ export class ContactFormComponent implements OnInit {
     );
   }
 
-  submit(): void {
-    const obj = {
-      firstName: this.myForm.get('firstName').value,
-      lastName: this.myForm.get('lastName').value,
-      email: this.myForm.get('email').value,
-      phone: this.myForm.get('phone').value,
-      license: this.myForm.get('license').value
-    };
-    this.emitter.emit(obj);
+  submit() {
+    try {
+      const postObj = new Pass();
+      this.validateFields(postObj);
+      this.emitter.emit(postObj);
+    } catch (error) {
+      alert (`An error occurred: ${error}`);
+    }
   }
+
+  private validateFields(obj) {
+    //Mandatory fields
+    obj.firstName = this.myForm.get('firstName').value;
+    obj.lastName = this.myForm.get('lastName').value;
+    obj.email = this.myForm.get('email').value;
+    obj.phone = this.myForm.get('phone').value;
+
+    //Optional fields
+    if (this.myForm.get('license').value){
+      obj.licence = this.myForm.get('licence').value;
+    } else {
+      delete obj.license;
+    }
+  }
+
 }

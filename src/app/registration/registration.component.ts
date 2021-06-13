@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
 import { FacilityService } from '../services/facility.service';
+import { PassService } from '../services/pass.service';
 import { Constants } from '../shared/utils/constants';
 
 @Component({
@@ -26,7 +27,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private facilityService: FacilityService
+    private facilityService: FacilityService,
+    private passService: PassService
   ) {
     // Prevent us from loading into /registration without going through the root page.
     // tslint:disable-next-line: max-line-length
@@ -71,8 +73,13 @@ export class RegistrationComponent implements OnInit {
   getContactFormObj(event): void {
     this.contactFormObj = event;
     this.regData = { ... this.facilityFormObj, ...this.contactFormObj };
+    this.submitPass(this.regData);
     this.regData['registrationNumber'] = '1234asdf';
     this.state = 'success';
     this.backButtonText = '';
+  }
+
+  submitPass(data):void {
+    console.log(data);
   }
 }
