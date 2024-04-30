@@ -16,6 +16,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { PhoneFormatDirective } from '../shared/components/phone-number-formater/phoneFormat';
 import { NgxIntlTelInputModule } from '@moddi3/ngx-intl-tel-input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TimerComponent } from './timer/timer.component';
 @NgModule({
   declarations: [
     RegistrationComponent,
@@ -26,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FailureComponent,
     GuidelinesComponent,
     RegistrationDetailsComponent,
-    PhoneFormatDirective
+    PhoneFormatDirective,
+    TimerComponent
   ],
   imports: [
     CommonModule,
